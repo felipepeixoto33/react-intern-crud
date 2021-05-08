@@ -1,0 +1,87 @@
+.hover-box {
+  /* azul */
+  position: absolute;
+  width: 50vw;
+  height: 100vh;
+  background: #0047ff;
+}
+
+.user-box {
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.user-info-box {
+  margin-left: 2vw;
+}
+
+.user-name,
+.user-function {
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.btn-task,
+.btn-info {
+  border: none;
+  color: white;
+}
+
+.btns-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-task-box {
+}
+
+.btn-task {
+  position: absolute;
+  width: 132px;
+  height: 40px;
+  left: 31px;
+  top: 120px;
+
+  background: #0047ff;
+  border-radius: 10px;
+}
+
+.btn-info {
+  position: absolute;
+  width: 132px;
+  height: 40px;
+  left: 31px;
+  top: 174px;
+
+  background: #0047ff;
+  border-radius: 10px;
+}
+
+.btn-info:hover,
+.btn-task:hover {
+  background-color: #0039cc;
+  cursor: pointer;
+}
+
+.btn-task:focus,
+.btn-info:focus {
+  background-color: #0039cc;
+}
+
+.btn-text {
+  margin-left: 20px;
+}
+
+@media (min-width: 960px) {
+  .hover-box {
+    position: absolute;
+    width: 10vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+  }
+}

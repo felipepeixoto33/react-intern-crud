@@ -1,0 +1,22 @@
+.task-card {
+  background-color: #0047ff;
+  width: 41vw;
+  color: white;
+  border-radius: 10px;
+  padding: 10px 25px;
+}
+
+.progress-box {
+  margin-top: 3.5vh;
+  margin-bottom: 2vh;
+  background-color: white;
+  color: black;
+  width: 104px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.progress-text {
+  color: black;
+  font-weight: 500;
+}

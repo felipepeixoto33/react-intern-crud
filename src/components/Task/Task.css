@@ -1,0 +1,54 @@
+.tasks-box {
+  margin-left: 30vw;
+  margin-top: 10vh;
+}
+
+.search-input-box {
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  width: 42vw;
+  background: rgba(0, 0, 0, 0.1);
+  align-items: center;
+}
+
+.search-input {
+  background-color: transparent;
+  margin-left: 0.5vw;
+  border: none;
+  top: 2vh;
+  width: 40vw;
+  outline: none;
+  font-size: 20px;
+}
+
+.task-title-box {
+  margin-top: 5vh;
+}
+
+.task-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+}
+
+.btn-new-task-box {
+  margin-left: 34.2vw;
+  margin-top: 4vh;
+  margin-bottom: 20px;
+}
+
+.btn-new-task {
+  padding: 20px;
+  font-size: 20px;
+}
+
+.btn-new-task:hover {
+  cursor: pointer;
+}
+
+.btn-new-task-text {
+  margin-left: 20px;
+  font-size: 20px;
+}
