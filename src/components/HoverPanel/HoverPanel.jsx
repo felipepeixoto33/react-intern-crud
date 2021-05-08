@@ -1,5 +1,6 @@
 import React from 'react';
 import './HoverPanel.css';
+import Button from '@material-ui/core/Button';
 import UserIcon from '../../images/user.svg';
 import TaskIcon from '../../images/task-icon.svg';
 import InfoIcon from '../../images/info-icon.svg';
@@ -14,12 +15,12 @@ const HoverPanel = (props) => {
           <img className="user-icon" src={UserIcon} alt="" />
           <div className="user-info-box">
             <h3 className="user-name">Nome</h3>
-            <p className="user-function">Funcao</p>
+            <p className="user-function">Função</p>
           </div>
         </div>
         <div className="btns-box">
           <div className="btn-task-box">
-            <button
+            <Button
               className="btn-task"
               onClick={() => {
                 props.setTasksClicked(true);
@@ -28,20 +29,20 @@ const HoverPanel = (props) => {
             >
               <img src={TaskIcon} alt="" />
               <label className="btn-text">Tarefas</label>
-              <a />
-            </button>
+            </Button>
           </div>
+
           <div className="btn-info-box">
-            <button
+            <Button
               className="btn-info"
               onClick={() => {
-                props.setInfoClicked(true);
                 props.setTasksClicked(false);
+                props.setInfoClicked(true);
               }}
             >
               <img src={InfoIcon} alt="" />
-              <label className="btn-text">Info</label>
-            </button>
+              <label className="btn-text">Sobre</label>
+            </Button>
           </div>
         </div>
       </div>

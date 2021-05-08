@@ -1,40 +1,29 @@
-.insert-popup-box {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  display: block;
-  align-items: center;
-  justify-content: center;
+.dialog-box {
+  font-weight: bold !important;
+  border-radius: 10px !important;
 }
 
-.insert-form-box {
-  width: 25vw;
-  height: 40vh;
-  left: 38vw;
-  top: 217px;
-
-  margin: 0 auto;
-  margin-top: 30vh;
-  padding: 10px 30px;
-
-  background: #ffffff;
-  border-radius: 10px;
-
-  align-content: center;
+.dialog-title {
+  font-weight: bold !important;
+  font-size: 50px !important;
 }
 
-.insert-title {
-  font-size: 20px;
+.task-title-input {
+  width: 15vw;
+  border-radius: 10px !important;
 }
 
-.inputs-box {
-  margin: 0 auto;
-  margin-left: 8.5vw;
-  margin-top: 10vh;
+.task-desc-input {
+  width: 15vw;
+  border-radius: 10px !important;
 }
 
-.task-name-input,
-.task-description-input {
-  padding: 20px;
+.btns-container {
+  margin-left: 40%;
+}
+
+.btn-cancel,
+.btn-save {
+  background-color: transparent !important;
+  color: #0047ff !important;
 }

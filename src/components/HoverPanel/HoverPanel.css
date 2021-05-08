@@ -24,46 +24,37 @@
   font-size: 14px;
 }
 
-.btn-task,
-.btn-info {
-  border: none;
-  color: white;
-}
-
 .btns-box {
-  display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px;
+}
+
+.btn-task,
+.btn-info {
+  border: none !important;
+  color: white !important;
+  width: 7vw;
+  height: 40px;
+  text-transform: none !important;
+
+  background: #0047ff;
+  border-radius: 10px !important;
 }
 
 .btn-task-box {
 }
 
 .btn-task {
-  position: absolute;
-  width: 132px;
-  height: 40px;
-  left: 31px;
-  top: 120px;
-
-  background: #0047ff;
-  border-radius: 10px;
 }
 
-.btn-info {
-  position: absolute;
-  width: 132px;
-  height: 40px;
-  left: 31px;
-  top: 174px;
-
-  background: #0047ff;
-  border-radius: 10px;
+.btn-info-box {
+  margin-top: 1vh;
 }
 
 .btn-info:hover,
 .btn-task:hover {
-  background-color: #0039cc;
+  background-color: #0039cc !important;
   cursor: pointer;
 }
 

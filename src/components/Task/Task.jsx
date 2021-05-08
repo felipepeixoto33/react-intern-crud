@@ -5,6 +5,8 @@ import TaskCard from './TaskCard';
 import SearchIcon from '../../images/search.svg';
 import PlusIcon from '../../images/plus-icon.svg';
 import InsertTask from '../Popups/InsertTask';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
 
 const Task = (props) => {
   const [searchValue, setSearchValue] = useState('');
@@ -14,7 +16,7 @@ const Task = (props) => {
 
   const url = 'https://chronos.compraqui.app/api/tasks';
 
-  console.log(props);
+  //console.log(props);
 
   const taskRequest = () => {
     if (tasks.length > 0) {
@@ -33,7 +35,7 @@ const Task = (props) => {
   useEffect(() => {
     setSearchedTasks(
       tasks.filter((task) => {
-        console.log('filtered');
+        //console.log('filtered');
         return task.title.toLowerCase().search(searchValue.toLowerCase()) != -1;
       })
     );
@@ -41,7 +43,7 @@ const Task = (props) => {
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
-    console.log(searchedTasks);
+    //console.log(searchedTasks);
   };
 
   let toShow = searchValue != '' ? searchedTasks : tasks;
@@ -67,7 +69,7 @@ const Task = (props) => {
   return (
     <>
       <div className="popup">
-        {newTaskClicked && <InsertTask {...{ setNewTaskClicked, onInsert }} />}
+        <InsertTask {...{ newTaskClicked, setNewTaskClicked, onInsert }} />
       </div>
       <div className="tasks-box">
         <div className="search-input-box">
@@ -86,14 +88,25 @@ const Task = (props) => {
           <h3 className="task-title">Tarefas</h3>
         </div>
         <div className="task-card-box">
-          {toShow.map((task) => {
-            return (
-              <div className="task-card-row" key={task.guid}>
-                <TaskCard task={task} />
-                <p />
-              </div>
-            );
-          })}
+          <GridList
+            className="grid-list"
+            cellHeight={'fit-content'}
+            cols={1}
+            style={{
+              width: '45vw',
+              height: 450,
+            }}
+          >
+            {toShow.map((task) => {
+              return (
+                <GridListTile key={task.guid}>
+                  <div className="task-card-row">
+                    <TaskCard task={task} />
+                  </div>
+                </GridListTile>
+              );
+            })}
+          </GridList>
         </div>
         <div className="btn-new-task-box">
           <button

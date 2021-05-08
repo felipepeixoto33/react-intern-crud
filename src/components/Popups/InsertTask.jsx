@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './InsertTask.css';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const InsertPopup = (props) => {
   const initialValues = {
@@ -7,15 +14,18 @@ const InsertPopup = (props) => {
     description: '',
   };
   const [values, setValues] = useState(initialValues);
+  const [open, setOpen] = useState(props.newTaskClicked);
+
+  useEffect(() => {
+    setOpen(props.newTaskClicked);
+    console.log(props.newTaskClicked);
+  }, [props.newTaskClicked]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.setNewTaskClicked(false);
+    setValues({ ...values, [name]: value });
+    //console.log(values);
   };
 
   const handleConfirm = (e) => {
@@ -30,47 +40,51 @@ const InsertPopup = (props) => {
 
     if (formCompleted) {
       props.onInsert(values);
+      props.setNewTaskClicked(false);
+      setValues(initialValues);
     }
+  };
+
+  const handleCancel = () => {
+    props.setNewTaskClicked(false);
+    setValues(initialValues);
   };
 
   return (
     <div className="insert-popup-box">
-      <div className="insert-form-box">
-        <form className="insert-form" onSubmit={handleSubmit}>
-          <div className="title-box">
-            <h3 className="insert-title">Criar Tarefa</h3>
+      <Dialog className="dialog-box" open={open} aria-labelledby="dialog-title">
+        <DialogTitle id="dialog-title" className="dialog-title">
+          Criar Tarefa
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+            className="task-title-input"
+            label="Nome da Tarefa"
+            variant="outlined"
+            name="title"
+            value={values.title}
+            onChange={handleChange}
+          />
+          <p />
+          <TextField
+            className="task-desc-input"
+            label="Descricao da Tarefa"
+            variant="outlined"
+            name="description"
+            value={values.description}
+            onChange={handleChange}
+          />
+          <p />
+          <div className="btns-container">
+            <Button className="btn-cancel" onClick={handleCancel}>
+              Cancelar
+            </Button>
+            <Button className="btn-save" onClick={handleConfirm}>
+              Salvar
+            </Button>
           </div>
-          <div className="inputs-box">
-            <div className="task-name-input-box">
-              <input
-                className="task-name-input"
-                name="title"
-                type="text"
-                onChange={handleChange}
-              />
-            </div>
-            <p />
-            <div className="task-description-input-box">
-              <input
-                className="task-description-input"
-                name="description"
-                type="text"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div className="btns-box">
-            <div className="btn-confirm-box">
-              <button className="btn-confirm" onClick={handleConfirm}>
-                CONFIRM
-              </button>
-            </div>
-            <div className="btn-cancel-box">
-              <button className="btn-cancel">CANCEL</button>
-            </div>
-          </div>
-        </form>
-      </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
