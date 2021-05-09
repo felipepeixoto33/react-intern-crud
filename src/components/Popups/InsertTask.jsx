@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -54,7 +55,9 @@ const InsertPopup = (props) => {
     <div className="insert-popup-box">
       <Dialog className="dialog-box" open={open} aria-labelledby="dialog-title">
         <DialogTitle id="dialog-title" className="dialog-title">
-          Criar Tarefa
+          <Typography style={{ fontWeight: 'bold', fontSize: '20px' }}>
+            Criar Tarefa
+          </Typography>
         </DialogTitle>
         <DialogContent>
           <TextField

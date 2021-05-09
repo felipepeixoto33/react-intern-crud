@@ -6,17 +6,35 @@
   padding: 10px 25px;
 }
 
+.task-name-box {
+  display: flex;
+}
+
+.btn-overlay {
+  float: right;
+}
+
 .progress-box {
-  margin-top: 3.5vh;
+  margin-top: 0vh;
   margin-bottom: 2vh;
+  margin-left: 2%;
   background-color: white;
   color: black;
   width: 104px;
   padding: 10px;
   border-radius: 10px;
+  text-align: center;
 }
 
 .progress-text {
   color: black;
   font-weight: 500;
+}
+
+.task-card-container {
+  background-color: '#0047ff' !important;
+  width: 41vw;
+  padding: 10px 25px;
+  border-radius: 10px !important;
+  font-weight: bold !important;
 }

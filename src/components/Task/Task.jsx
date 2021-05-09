@@ -54,14 +54,15 @@ const Task = (props) => {
     });
   };
 
-  const onUpdate = (id, obj) => {
-    axios.put(`${url}/${id}`, obj).then(() => {
+  const onUpdate = (obj) => {
+    axios.put(`${url}`, obj).then(() => {
       taskRequest();
     });
   };
 
   const onDelete = (id) => {
     axios.delete(`${url}/${id}`).then(() => {
+      console.log(`${url}/${id}`);
       taskRequest();
     });
   };
@@ -90,7 +91,7 @@ const Task = (props) => {
         <div className="task-card-box">
           <GridList
             className="grid-list"
-            cellHeight={'fit-content'}
+            cellHeight={'should be wrong lol'} // Mano, fazer essa propriedade ficar certa faz o grid list ficar bugadasso KKKKK. Q porra...
             cols={1}
             style={{
               width: '45vw',
@@ -101,7 +102,7 @@ const Task = (props) => {
               return (
                 <GridListTile key={task.guid}>
                   <div className="task-card-row">
-                    <TaskCard task={task} />
+                    <TaskCard {...{ task, onUpdate, onDelete }} />
                   </div>
                 </GridListTile>
               );

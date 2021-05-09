@@ -1,0 +1,28 @@
+.btns-task-progress-container {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.btn-task-progress-container {
+  margin: 0 auto;
+}
+
+.btn-progress,
+.btn-completed {
+  font-size: 10px !important;
+  font-variant: normal !important;
+  background-color: transparent !important;
+}
+
+.btn-progress:focus,
+.btn-completed:focus {
+  background-color: white !important;
+  border-radius: 5px;
+}
+
+.btn-completed-container {
+  margin-left: 15.5%;
+}
