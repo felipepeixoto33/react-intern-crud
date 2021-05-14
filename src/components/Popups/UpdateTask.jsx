@@ -88,7 +88,13 @@ const UpdatePopup = (props) => {
                   setValues({ ...values, situation: 'uncompleted' });
                 }}
               >
-                <Typography style={{ fontWeight: 'bold', fontSize: '14px' }}>
+                <Typography
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: '14px',
+                    textTransform: 'capitalize',
+                  }}
+                >
                   Em progresso
                 </Typography>
               </Button>
@@ -104,6 +110,7 @@ const UpdatePopup = (props) => {
                   style={{
                     fontWeight: 'bold',
                     fontSize: '14px',
+                    textTransform: 'capitalize',
                   }}
                 >
                   Concluido

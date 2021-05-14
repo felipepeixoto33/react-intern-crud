@@ -26,7 +26,6 @@ const InsertPopup = (props) => {
     const { name, value } = e.target;
 
     setValues({ ...values, [name]: value });
-    //console.log(values);
   };
 
   const handleConfirm = (e) => {
@@ -52,43 +51,41 @@ const InsertPopup = (props) => {
   };
 
   return (
-    <div className="insert-popup-box">
-      <Dialog className="dialog-box" open={open} aria-labelledby="dialog-title">
-        <DialogTitle id="dialog-title" className="dialog-title">
-          <Typography style={{ fontWeight: 'bold', fontSize: '20px' }}>
-            Criar Tarefa
-          </Typography>
-        </DialogTitle>
-        <DialogContent>
-          <TextField
-            className="task-title-input"
-            label="Nome da Tarefa"
-            variant="outlined"
-            name="title"
-            value={values.title}
-            onChange={handleChange}
-          />
-          <p />
-          <TextField
-            className="task-desc-input"
-            label="Descricao da Tarefa"
-            variant="outlined"
-            name="description"
-            value={values.description}
-            onChange={handleChange}
-          />
-          <p />
-          <div className="btns-container">
-            <Button className="btn-cancel" onClick={handleCancel}>
-              Cancelar
-            </Button>
-            <Button className="btn-save" onClick={handleConfirm}>
-              Salvar
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
+    <Dialog className="dialog-box" open={open} aria-labelledby="dialog-title">
+      <DialogTitle id="dialog-title" className="dialog-title">
+        <Typography style={{ fontWeight: 'bold', fontSize: '20px' }}>
+          Criar Tarefa
+        </Typography>
+      </DialogTitle>
+      <DialogContent>
+        <TextField
+          className="task-title-input"
+          label="Nome da Tarefa"
+          variant="outlined"
+          name="title"
+          value={values.title}
+          onChange={handleChange}
+        />
+        <p />
+        <TextField
+          className="task-desc-input"
+          label="Descricao da Tarefa"
+          variant="outlined"
+          name="description"
+          value={values.description}
+          onChange={handleChange}
+        />
+        <p />
+        <div className="btns-container">
+          <Button className="btn-cancel" onClick={handleCancel}>
+            Cancelar
+          </Button>
+          <Button className="btn-save" onClick={handleConfirm}>
+            Salvar
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 

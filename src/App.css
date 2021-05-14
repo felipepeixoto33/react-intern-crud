@@ -2,12 +2,21 @@
   text-align: center;
 }
 
-@media (min-width: 960px) {
+.box {
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
   .hover-box {
     position: absolute;
-    width: 10vw;
+    width: 10%;
     height: 100vh;
     left: 0px;
     top: 0px;
+  }
+
+  .btn-box {
+    padding: 30px 20px;
   }
 }

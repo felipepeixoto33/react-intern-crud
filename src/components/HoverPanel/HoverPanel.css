@@ -1,8 +1,8 @@
 .hover-box {
   /* azul */
   position: absolute;
-  width: 50vw;
-  height: 100vh;
+  width: 50%;
+  height: 100%;
   background: #0047ff;
 }
 
@@ -26,30 +26,34 @@
 
 .btns-box {
   justify-content: center;
-  align-items: center;
   padding: 30px;
+}
+
+.btn-task-box {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-info-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vh;
 }
 
 .btn-task,
 .btn-info {
   border: none !important;
   color: white !important;
-  width: 7vw;
+  width: 132px;
   height: 40px;
   text-transform: none !important;
 
   background: #0047ff;
+  background-size: cover !important;
   border-radius: 10px !important;
 }
 
-.btn-task-box {
-}
-
 .btn-task {
-}
-
-.btn-info-box {
-  margin-top: 1vh;
 }
 
 .btn-info:hover,

@@ -27,3 +27,14 @@
   background-color: transparent !important;
   color: #0047ff !important;
 }
+
+@media (max-width: 960px) {
+  .task-title-input,
+  .task-desc-input {
+    width: 100%;
+  }
+
+  .btns-container {
+    margin-left: 20%;
+  }
+} ;

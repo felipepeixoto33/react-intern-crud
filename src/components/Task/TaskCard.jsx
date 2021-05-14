@@ -14,6 +14,10 @@ import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import EditIcon from '../../images/edit-icon.svg';
+import RemoveIcon from '../../images/remove-icon.svg';
+import CorrectIcon from '../../images/correct-icon.svg';
+
 const TaskCard = (props) => {
   const [progress, setProgress] = useState('uncompleted');
   const [anchorEl, setAnchorEl] = useState(null);
@@ -35,7 +39,7 @@ const TaskCard = (props) => {
     props.onDelete(props.task.guid);
   };
 
-  const handleClose = (e) => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
@@ -43,22 +47,6 @@ const TaskCard = (props) => {
 
   return (
     <>
-      {/* <div className="task-card">
-        <Button className="btn-overlay">
-          <img src={Overlay} />
-        </Button>
-        <div className="task-name-box">
-          <h3 className="task-name">{props.task.title}</h3>
-        </div>
-
-        <div className="task-description-box">
-          <span className="task-description">{props.task.description}</span>
-        </div>
-        <div className="progress-box">
-          <span className="progress-text">{progressText}</span>
-        </div>
-      </div>
-      <br /> */}
       <div className="update-dialog-container">
         <UpdateTask
           {...{ updateTaskClicked, setUpdateTaskClicked }}
@@ -71,9 +59,9 @@ const TaskCard = (props) => {
         style={{ backgroundColor: '#0047ff' }}
       >
         <CardHeader
+          className="task-info"
           action={
             <IconButton
-              className=""
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={handleClick}
@@ -95,7 +83,16 @@ const TaskCard = (props) => {
         ></CardHeader>
         <br />
         <div className="progress-box">
-          <span className="progress-text">{progressText}</span>
+          <span className="progress-text">
+            {progress === 'completed' ? (
+              <>
+                <img src={CorrectIcon} />
+                <label className="button-text"> Concluído</label>
+              </>
+            ) : (
+              'Em progresso'
+            )}
+          </span>
         </div>
       </Card>
       <Menu
@@ -110,7 +107,10 @@ const TaskCard = (props) => {
             setUpdateTaskClicked(true);
           }}
         >
-          Atualizar Tarefa
+          <img src={EditIcon} />
+          <label className="btn-text" style={{ color: 'rgba(0,0,0,0.4)' }}>
+            Atualizar tarefa
+          </label>
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -118,10 +118,12 @@ const TaskCard = (props) => {
             handleDelete();
           }}
         >
-          Remover Tarefa
+          <img src={RemoveIcon} />
+          <label className="btn-text" style={{ color: 'rgba(0,0,0,0.4)' }}>
+            Remover tarefa
+          </label>
         </MenuItem>
       </Menu>
-      <br />
       <br />
     </>
   );
