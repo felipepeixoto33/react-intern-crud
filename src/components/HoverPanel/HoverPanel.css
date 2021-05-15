@@ -6,22 +6,36 @@
   background: #0047ff;
 }
 
-.user-box {
-  display: flex;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 10px;
+.user-grid {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr;
+  column-gap: 10px;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 20%;
   border-bottom: 1px solid #ffffff;
+  align-items: center;
+  justify-items: center;
+}
+
+.user-image-box {
+  grid-row: 1/2;
+  margin-bottom: 20px;
 }
 
 .user-info-box {
-  margin-left: 2vw;
+  margin-bottom: 20px;
+  justify-self: flex-start;
 }
 
 .user-name,
 .user-function {
   color: #ffffff;
   font-size: 14px;
+}
+
+.user-name {
+  font-weight: 500;
 }
 
 .btns-box {

@@ -18,6 +18,9 @@ import EditIcon from '../../images/edit-icon.svg';
 import RemoveIcon from '../../images/remove-icon.svg';
 import CorrectIcon from '../../images/correct-icon.svg';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { openUpdateScreen } from '../../redux/actions';
+
 const TaskCard = (props) => {
   const [progress, setProgress] = useState('uncompleted');
   const [anchorEl, setAnchorEl] = useState(null);
@@ -26,6 +29,9 @@ const TaskCard = (props) => {
   let progressText = progress === 'completed' ? 'Concluído' : 'Em progresso';
 
   //console.log(props.task.guid);
+
+  //Redux
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setProgress(props.task.situation);
@@ -105,6 +111,7 @@ const TaskCard = (props) => {
           onClick={() => {
             handleClose();
             setUpdateTaskClicked(true);
+            dispatch(openUpdateScreen());
           }}
         >
           <img src={EditIcon} />

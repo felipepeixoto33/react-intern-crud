@@ -5,26 +5,27 @@ import UserIcon from '../../images/user.svg';
 import TaskIcon from '../../images/task-icon.svg';
 import InfoIcon from '../../images/info-icon.svg';
 
+import { openTaskScreen, closeTaskScreen } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+
 const HoverPanel = (props) => {
   console.log(props);
   const taskButton = useRef(null);
   const infoButton = useRef(null);
 
-  useEffect(() => {
-    if (props.tasksClicked) {
-      taskButton.current.focus();
-    } else {
-      infoButton.current.focus();
-    }
-  }, [props.infoClicked, props.tasksClicked]);
+  //REDUX
+  const dispatch = useDispatch();
 
   return (
     <div className="hover-box">
-      <div className="user-box">
-        <img className="user-icon" src={UserIcon} alt="" />
+      <div className="user-grid">
+        <div className="user-image-box">
+          <img className="user-icon" src={UserIcon} alt="" />
+        </div>
         <div className="user-info-box">
-          <h3 className="user-name">Nome</h3>
-          <p className="user-function">Função</p>
+          <span className="user-name">Nome</span>
+          <br />
+          <label className="user-function">Função</label>
         </div>
       </div>
       <div className="btns-box">
@@ -33,9 +34,9 @@ const HoverPanel = (props) => {
             className="btn-task"
             ref={taskButton}
             onClick={() => {
-              props.setTasksClicked(true);
               props.setInfoClicked(false);
               props.setHoverClicked(false);
+              dispatch(openTaskScreen());
             }}
           >
             <img src={TaskIcon} alt="" />
@@ -48,9 +49,9 @@ const HoverPanel = (props) => {
             className="btn-info"
             ref={infoButton}
             onClick={() => {
-              props.setTasksClicked(false);
               props.setInfoClicked(true);
               props.setHoverClicked(false);
+              dispatch(closeTaskScreen());
             }}
           >
             <img src={InfoIcon} alt="" />

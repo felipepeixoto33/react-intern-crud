@@ -9,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { closeInsertScreen } from '../../redux/actions';
+
 const InsertPopup = (props) => {
   const initialValues = {
     title: '',
@@ -16,6 +19,11 @@ const InsertPopup = (props) => {
   };
   const [values, setValues] = useState(initialValues);
   const [open, setOpen] = useState(props.newTaskClicked);
+
+  //Redux
+  const dispatch = useDispatch();
+  const isInsertOpen = useSelector((state) => state.insertScreenReducer);
+  //console.log(`insertOpen = ${isInsertOpen}`);
 
   useEffect(() => {
     setOpen(props.newTaskClicked);
@@ -30,6 +38,7 @@ const InsertPopup = (props) => {
 
   const handleConfirm = (e) => {
     let formCompleted = true;
+
     if (values.title == '') {
       formCompleted = false;
     }
@@ -40,18 +49,22 @@ const InsertPopup = (props) => {
 
     if (formCompleted) {
       props.onInsert(values);
-      props.setNewTaskClicked(false);
+      dispatch(closeInsertScreen());
       setValues(initialValues);
     }
   };
 
   const handleCancel = () => {
-    props.setNewTaskClicked(false);
+    dispatch(closeInsertScreen());
     setValues(initialValues);
   };
 
   return (
-    <Dialog className="dialog-box" open={open} aria-labelledby="dialog-title">
+    <Dialog
+      className="dialog-box"
+      open={isInsertOpen}
+      aria-labelledby="dialog-title"
+    >
       <DialogTitle id="dialog-title" className="dialog-title">
         <Typography style={{ fontWeight: 'bold', fontSize: '20px' }}>
           Criar Tarefa

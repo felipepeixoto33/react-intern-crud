@@ -7,14 +7,13 @@ import MobileButton from './images/mobile-button.svg';
 import HoverPanel from './components/HoverPanel/HoverPanel';
 import Task from './components/Task/Task';
 
-//import { openTaskScreen, closeTaskScreen } from './redux/actions';
-//import { useSelector, useDispatch } from 'react-redux';
+import { openTaskScreen, closeTaskScreen } from './redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 
-const App: React.FC = () => {
-  const [infoClicked, setInfoClicked] = useState<boolean>(false);
-  const [tasksClicked, setTasksClicked] = useState<boolean>(false);
+const App = () => {
+  const [infoClicked, setInfoClicked] = useState(false);
 
-  //Mobile
+  //#region MOBILE
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [hoverClicked, setHoverClicked] = useState(false);
   const mobileMaxWidth = 960;
@@ -26,6 +25,13 @@ const App: React.FC = () => {
   };
 
   window.addEventListener('resize', handleResize);
+  //#endregion
+
+  //#region REDUX
+
+  const taskScreen = useSelector((state) => state.taskScreenReducer);
+
+  //#endregion
 
   return (
     <>
@@ -43,8 +49,6 @@ const App: React.FC = () => {
                 <HoverPanel
                   {...{
                     infoClicked,
-                    tasksClicked,
-                    setTasksClicked,
                     setInfoClicked,
                     setHoverClicked,
                   }}
@@ -66,19 +70,17 @@ const App: React.FC = () => {
           <HoverPanel
             {...{
               infoClicked,
-              tasksClicked,
-              setTasksClicked,
               setInfoClicked,
               setHoverClicked,
             }}
           />
         )}
-        <div className="task-box">{tasksClicked && <Task />}</div>
+        <div aria-disabled="false" className="task-box">
+          {taskScreen && <Task />}
+        </div>
       </div>
     </>
   );
 };
 
 export default App;
-
-//MOBILE

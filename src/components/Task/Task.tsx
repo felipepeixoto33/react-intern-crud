@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Task.css';
 
-//import { useSelector, useDispatch } from 'react-redux';
-//import { openTaskScreen, closeTaskScreen } from '../../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  openTaskScreen,
+  closeTaskScreen,
+  openInsertScreen,
+  closeInsertScreen,
+} from '../../redux/actions';
 
 import TaskCard from './TaskCard';
 import SearchIcon from '../../images/search.svg';
@@ -21,9 +26,9 @@ const Task = () => {
   const [searchValue, setSearchValue] = useState('');
   const [tasks, setTasks] = useState([]);
   let [searchedTasks, setSearchedTasks] = useState([]);
-  const [newTaskClicked, setNewTaskClicked] = useState(false);
 
-  //const dispatch = useDispatch();
+  //Redux
+  const dispatch = useDispatch();
 
   const url = 'https://chronos.compraqui.app/api/tasks';
 
@@ -81,7 +86,7 @@ const Task = () => {
   return (
     <>
       <div className="popup">
-        <InsertTask {...{ newTaskClicked, setNewTaskClicked, onInsert }} />
+        <InsertTask {...{ onInsert }} />
       </div>
       <div className="tasks-box">
         <div className="search-input-box">
@@ -112,8 +117,8 @@ const Task = () => {
           <button
             className="btn btn-new-task"
             onClick={() => {
-              setNewTaskClicked(true);
-              console.log('new task clicked');
+              dispatch(openInsertScreen());
+              //console.log('new task clicked');
             }}
           >
             <img src={PlusIcon} />

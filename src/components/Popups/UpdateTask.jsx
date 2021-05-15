@@ -9,6 +9,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { closeUpdateScreen } from '../../redux/actions';
+
 const UpdatePopup = (props) => {
   const initialValues = {
     guid: props.task.guid,
@@ -19,9 +22,14 @@ const UpdatePopup = (props) => {
   const [values, setValues] = useState(initialValues);
   const [open, setOpen] = useState(props.updateTaskClicked);
 
+  //Redux
+  //Bug ao trocar o 'open' do Dialog por 'ísUpdateOpen': A tarefa fica sempre sendo a última presente.
+  const dispatch = useDispatch();
+  const isUpdateOpen = useSelector((state) => state.updateScreenReducer);
+
   useEffect(() => {
     setOpen(props.updateTaskClicked);
-  }, [props.updateTaskClicked]);
+  }, [props.updateTaskClicked, isUpdateOpen]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +51,7 @@ const UpdatePopup = (props) => {
     if (formCompleted) {
       props.onUpdate(values);
       //console.log(props);
+      dispatch(closeUpdateScreen());
       props.setUpdateTaskClicked(false);
       setValues(initialValues);
     }
@@ -50,6 +59,7 @@ const UpdatePopup = (props) => {
 
   const handleCancel = () => {
     props.setUpdateTaskClicked(false);
+    dispatch(closeUpdateScreen());
     setValues(initialValues);
   };
 
